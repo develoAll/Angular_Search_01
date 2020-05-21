@@ -57,12 +57,29 @@ export class HeroeService {
         }
       ];
 
+    // lo use solo para comprobar que esa funcionando el servico
     constructor() {
         console.log('servicio listo para usar!!!');
     }
-
+    // esto se usa para poder retornar el valor del arreglo en otro component como en *heroes*
     getHeroes(): Heroe[] {
         return this.heroes;
+    }
+
+    getHeroe( idx: string) {
+      return this.heroes[idx];
+    }
+    // hace la busqueda del arreglo que tengo el mismo nombre de la busqueda
+    buscarHeroe( termino: string ): Heroe[] {
+      let heroeArr: Heroe[] = [] ;
+      termino = termino.toLowerCase();
+      for ( let hero of this.heroes ) {
+        let nombre = hero.nombre.toLowerCase();
+        if (nombre.indexOf(termino) >= 0) {
+          heroeArr.push(hero);
+        }
+      }
+      return heroeArr;
     }
 }
 
